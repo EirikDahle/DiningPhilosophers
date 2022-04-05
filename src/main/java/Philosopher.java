@@ -1,4 +1,6 @@
-
+/**
+ * Class Philosopher represent a runnable object as a person assigned with chopsticks around a round table.
+ */
 public class Philosopher extends Thread {
 
     private final int id;
@@ -8,6 +10,7 @@ public class Philosopher extends Thread {
     /**
      * Giving each Philosopher an unique identification and assigning them two chopsticks,
      * one on the left and right hand side.
+     *
      * @param id a philosophers unique identification.
      * @param leftChopstick this philosophers left chopstick identification.
      * @param rightChopstick this philosophers right chopstick identification.
@@ -23,8 +26,8 @@ public class Philosopher extends Thread {
 
     /**
      * Every philosopher is represented as threads performing the different actions.
-     * while (true) acts as a infinite loop so that the actions can be repeated over and over
-     * without any deadlocks. Modulus if-statement prevents deadlocks having one of the philosophers
+     * while (true) acts as a infinite loop so that the actions can be repeated over and over.
+     * Modulus if-statement prevents deadlocks having one of the philosophers
      * pick up the left chopstick first instead of the right.
      */
     @Override
@@ -51,10 +54,11 @@ public class Philosopher extends Thread {
         }
 
     /**
-     * threadSleep is implemented to slow down the infinite cycle of actions.
+     * ThreadSleep is implemented to slow down the infinite cycle of actions.
      * By having its own method its easier to alter the duration it takes for philosophers
      * to eat, think etc. by having min and max time period instead of a set time it varies
      * how long time each philosopher spends between actions.
+     *
      * @param minTime minimum time for threads to sleep.
      * @param maxTime maximum time for threads to sleep.
      */
@@ -74,7 +78,7 @@ public class Philosopher extends Thread {
     }
 
     /**
-     * Think() method used in run() to initialize thinking action and print according information.
+     * Method used in run() to initialize thinking action and print according information.
      */
     private void think() {
 
@@ -82,7 +86,7 @@ public class Philosopher extends Thread {
     }
 
     /**
-     * pickUpLeftThenRightChopstick() method is used in run() to make philosopher take chopsticks,
+     * Method is used in run() to make philosopher take chopsticks,
      * first the one on the left side then followed by the right to break deadlock.
      */
     private void pickUpLeftThenRightChopstick() {
@@ -99,7 +103,7 @@ public class Philosopher extends Thread {
     }
 
     /**
-     * pickUpRightThenLeftChopstick() method is used in run() to make philosopher take chopsticks,
+     * Method is used in run() to make philosopher take chopsticks,
      * first the one on the right side then followed by the left.
      */
     private void pickUpRightThenLeftChopstick() {
@@ -116,7 +120,7 @@ public class Philosopher extends Thread {
     }
 
     /**
-     * eat() method used in run() and is common for every scenario so that when philosophers have gathered
+     * Method used in run() and is common for every scenario so that when philosophers have gathered
      * both a right and left chopstick they will proceed to eat, before putting them down again and go back to thinking.
      */
     private void eat() {
@@ -135,10 +139,10 @@ public class Philosopher extends Thread {
     }
 
     /**
-     * getRandomNumber() is used to generates a random time period within a given interval for threads
-     * to stop up between actions.
-     * @param min sets a minimum for a threads sleeptime.
-     * @param max sets a maximum for a threads sleeptime.
+     * used to generate a random number.
+     *
+     * @param min sets a minimum integer value.
+     * @param max sets a maximum integer value.
      */
     private int getRandomNumber(int min, int max) {
 
@@ -147,17 +151,20 @@ public class Philosopher extends Thread {
     }
 
     /**
-     * getPhilosopherId() is used to display which philosopher performs which act in the printed sequence.
+     * is used to display which philosopher performs which act in the printed sequence.
+     *
      * @return philosopher identification.
      */
     public int getPhilosopherId() {
 
+        // return identification (+1) to get correct values when printing from array.
         return this.id + 1;
 
     }
 
     /**
-     * getLeftChopstickId() returns the id of a philosophers chopstick on the left side.
+     * returns the id of a philosophers chopstick on the left side.
+     *
      * @return left hand chopstick identification.
      */
     public int getLeftChopstickId() {
@@ -167,7 +174,8 @@ public class Philosopher extends Thread {
     }
 
     /**
-     * getRightChopstickId() returns the id of a philosophers chopstick on the right side.
+     * returns the id of a philosophers chopstick on the right side.
+     *
      * @return right hand chopstick identification.
      */
     public int getRightChopstickId() {

@@ -1,3 +1,7 @@
+/**
+ * The Chopstick class represent the individual chopsticks as objects.
+ * A chopstick is identified and should be acquired by philosophers as soon as it is no longer occupied.
+ */
 public class Chopstick {
 
     public final int id;
@@ -6,6 +10,7 @@ public class Chopstick {
 
     /**
      * giving each chopstick its unique identification.
+     *
      * @param id a chopsticks unique identification
      */
     public Chopstick(int id) {
@@ -18,6 +23,7 @@ public class Chopstick {
      * The chopsticks acts as objects that can be used by all philosophers,
      * but not at the same time. By using a synchronized method a singular chopstick
      * can only be attained by one philosopher at a time.
+     *
      * @param philosopher which philosopher occupies a chopstick.
      */
     public synchronized void takeChopstick(int philosopher) {
@@ -29,6 +35,7 @@ public class Chopstick {
             } catch (InterruptedException ignored) {}
         }
 
+        // Chopstick is currently occupied by philosopher.
         occupiedChopstick = philosopher;
 
         notOccupiedChopstick = false;
@@ -37,8 +44,8 @@ public class Chopstick {
     }
 
     /**
-     * When a philosophers left or right hand chopstick is put down, the philosopher on the other hand should
-     * receive a notification that the chopstick is no longer occupied and available to pick up.
+     * Philosophers receive a notification that the chopstick is no longer occupied and available to pick up.
+     *
      * @param philosopher which philosopher puts down his chopstick.
      */
     public synchronized void putDownChopstick(int philosopher) {

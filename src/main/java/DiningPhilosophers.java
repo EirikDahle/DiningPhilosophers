@@ -8,12 +8,14 @@ import java.util.concurrent.Executors;
 public class DiningPhilosophers {
 
     /**
-     * createPhilosopher() initializes a amount of Philosophers and equally as many chopsticks "n" as Threads.
+     * initializes a amount of Philosophers and equally as many chopsticks "numberOfPhilosophers" as Threads.
      * Philosophers is assigned both a left and right chopstick.
+     *
      * @param numberOfPhilosophers the amount of philosophers and the same amount of chopsticks.
      */
     public static Philosopher[] createPhilosopherWithChopsticks(int numberOfPhilosophers) {
 
+        // Creates an amount of chopsticks as object in a fixed size array.
         Chopstick[] chopsticks = new Chopstick[numberOfPhilosophers];
 
         for (int i = 0; i < numberOfPhilosophers; i++){
@@ -21,6 +23,7 @@ public class DiningPhilosophers {
 
         }
 
+        // Creates an amount of philosophers as object in a fixed size array.
         Philosopher[] philosophers = new Philosopher[numberOfPhilosophers];
 
         for (int i = 0; i < numberOfPhilosophers; i++){
