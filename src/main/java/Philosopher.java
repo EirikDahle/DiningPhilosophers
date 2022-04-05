@@ -42,55 +42,59 @@ public class Philosopher extends Thread {
 
     }
 
-    private void threadSleep() {
+    private void threadSleep(int minTime, int maxTime) {
         try {
-            Thread.sleep(getRandomNumber(500, 4000));
+            Thread.sleep(getRandomNumber(minTime, maxTime));
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }
 
     }
     private void think() {
-        System.out.println("\nPhilosopher " + getPhilisopherId() + " : THINKING..");
+        System.out.println("\nPhilosopher " + getPhilosopherId() + " : THINKING..");
     }
 
     private void pickUpLeftThenRightChopstick() {
         leftChopstick.takeChopstick(id);
-        System.out.println("\nPhilosopher " + getPhilisopherId() + " HUNGRY, PICKS UP LEFT CHOPSTICK " + leftChopstick.id);
+        System.out.println("\nPhilosopher " + getPhilosopherId() + " HUNGRY, PICKS UP LEFT CHOPSTICK " + getChopstickId());
 
         rightChopstick.takeChopstick(id);
-        System.out.println("Philosopher " + getPhilisopherId() + " PICKS UP RIGHT CHOPSTICK " + rightChopstick.id);
+        System.out.println("Philosopher " + getPhilosopherId() + " PICKS UP RIGHT CHOPSTICK " + getChopstickId());
 
-        threadSleep();
+        threadSleep(500, 4000);
     }
 
     private void pickUpRightThenLeftChopstick() {
         rightChopstick.takeChopstick(id);
-        System.out.println("\nPhilosopher " + getPhilisopherId() + " HUNGRY, PICKS UP RIGHT CHOPSTICK " + rightChopstick.id);
+        System.out.println("\nPhilosopher " + getPhilosopherId() + " HUNGRY, PICKS UP RIGHT CHOPSTICK " + getChopstickId());
 
         leftChopstick.takeChopstick(id);
-        System.out.println("Philosopher " + getPhilisopherId() + " PICKS UP LEFT CHOPSTICK " + leftChopstick.id);
+        System.out.println("Philosopher " + getPhilosopherId() + " PICKS UP LEFT CHOPSTICK " + getChopstickId());
 
-        threadSleep();
+        threadSleep(500, 4000);
     }
 
     private void eat() {
-        System.out.println("\nPhilosopher " + getPhilisopherId() + " EATING..");
+        System.out.println("\nPhilosopher " + getPhilosopherId() + " EATING..");
 
         leftChopstick.putDownChopstick(id);
-        System.out.println("Philosopher " + getPhilisopherId() + " DONE EATING, PUT DOWN LEFT CHOPSTICK " + leftChopstick.id);
+        System.out.println("Philosopher " + getPhilosopherId() + " DONE EATING, PUT DOWN LEFT CHOPSTICK " + getChopstickId());
 
         rightChopstick.putDownChopstick(id);
-        System.out.println("Philosopher " + getPhilisopherId() + " PUT DOWN RIGHT CHOPSTICK, BACK TO THINKING " + rightChopstick.id);
+        System.out.println("Philosopher " + getPhilosopherId() + " PUT DOWN RIGHT CHOPSTICK, BACK TO THINKING " + getChopstickId());
 
-        threadSleep();
+        threadSleep(500, 4000);
     }
 
     private int getRandomNumber(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
     }
 
-    public int getPhilisopherId() {
+    public int getPhilosopherId() {
+        return this.id + 1;
+    }
+
+    public int getChopstickId() {
         return this.id + 1;
     }
 }
