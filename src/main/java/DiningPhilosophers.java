@@ -42,6 +42,7 @@ public class DiningPhilosophers {
     public static void main(String[] args) {
 
         // ExecutorService start of the threads and allows a number of 6 threads to run in its pool.
+        // The amount of threads can be altered, this is to stop the application from launching unnecessary amounts.
         ExecutorService executorService = Executors.newFixedThreadPool(6);
 
         //creates 5 philosophers.

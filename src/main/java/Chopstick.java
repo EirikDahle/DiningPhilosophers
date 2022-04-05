@@ -33,8 +33,6 @@ public class Chopstick {
 
         notOccupiedChopstick = false;
 
-        //Thread.sleep(((int) (Math.random() * 2000)));
-
 
     }
 
@@ -49,8 +47,6 @@ public class Chopstick {
             notOccupiedChopstick = true;
             // Notify method should notify a "waiting" philosopher if the chopstick is available.
             notify();
-
-            //Thread.sleep(((int) (Math.random() * 2000)));
 
         }
     }
