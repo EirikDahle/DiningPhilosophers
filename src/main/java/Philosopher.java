@@ -14,11 +14,19 @@ public class Philosopher extends Thread {
         this.rightChopstick = rightChopstick;
     }
 
+
+
+    /**
+     * Every philosopher is represented as threads performing these different actions.
+     *
+     */
     @Override
     public void run() {
-        for (;;) {
+
+            while (true) {
 
             System.out.println("Philosopher " + id + " : THINKING..");
+
                 if (id % 2 == 0) {
 
                     leftChopstick.takeChopstick(id);
@@ -38,6 +46,7 @@ public class Philosopher extends Thread {
 
                 }
 
+                
             System.out.println("Philosopher " + id + " EATING..");
 
             leftChopstick.putDownChopstick(id);
@@ -46,6 +55,8 @@ public class Philosopher extends Thread {
             rightChopstick.putDownChopstick(id);
             System.out.println("Philosopher " + id + " PUT DOWN RIGHT CHOPSTICK, BACK TO THINKING" + rightChopstick.id);
 
+
         }
+
     }
 }
