@@ -1,4 +1,3 @@
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -28,10 +27,13 @@ public class DiningPhilosophers {
 
     public static void main(String[] args) {
 
+        // ExecutorService start of the threads and allows a number of 6 threads to run in its pool.
         ExecutorService executorService = Executors.newFixedThreadPool(6);
 
+        //creates 5 philosophers.
         Philosopher[] philosophers = createPhilosopher(5);
 
+        //for every philosopher a thread pool is assigned.
         for (Philosopher philosopher : philosophers) {
             executorService.execute(philosopher);
         }
