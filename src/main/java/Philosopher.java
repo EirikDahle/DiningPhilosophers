@@ -56,20 +56,20 @@ public class Philosopher extends Thread {
 
     private void pickUpLeftThenRightChopstick() {
         leftChopstick.takeChopstick(id);
-        System.out.println("\nPhilosopher " + getPhilosopherId() + " HUNGRY, PICKS UP LEFT CHOPSTICK " + getChopstickId());
+        System.out.println("\nPhilosopher " + getPhilosopherId() + " HUNGRY, PICKS UP CHOPSTICK " + getLeftChopstickId());
 
         rightChopstick.takeChopstick(id);
-        System.out.println("Philosopher " + getPhilosopherId() + " PICKS UP RIGHT CHOPSTICK " + getChopstickId());
+        System.out.println("Philosopher " + getPhilosopherId() + " PICKS UP CHOPSTICK " + getRightChopstickId());
 
         threadSleep(500, 4000);
     }
 
     private void pickUpRightThenLeftChopstick() {
         rightChopstick.takeChopstick(id);
-        System.out.println("\nPhilosopher " + getPhilosopherId() + " HUNGRY, PICKS UP RIGHT CHOPSTICK " + getChopstickId());
+        System.out.println("\nPhilosopher " + getPhilosopherId() + " HUNGRY, PICKS UP CHOPSTICK " + getRightChopstickId());
 
         leftChopstick.takeChopstick(id);
-        System.out.println("Philosopher " + getPhilosopherId() + " PICKS UP LEFT CHOPSTICK " + getChopstickId());
+        System.out.println("Philosopher " + getPhilosopherId() + " PICKS UP CHOPSTICK " + getLeftChopstickId());
 
         threadSleep(500, 4000);
     }
@@ -78,10 +78,10 @@ public class Philosopher extends Thread {
         System.out.println("\nPhilosopher " + getPhilosopherId() + " EATING..");
 
         leftChopstick.putDownChopstick(id);
-        System.out.println("Philosopher " + getPhilosopherId() + " DONE EATING, PUT DOWN LEFT CHOPSTICK " + getChopstickId());
+        System.out.println("Philosopher " + getPhilosopherId() + " DONE EATING, PUT DOWN CHOPSTICK " + getLeftChopstickId());
 
         rightChopstick.putDownChopstick(id);
-        System.out.println("Philosopher " + getPhilosopherId() + " PUT DOWN RIGHT CHOPSTICK, BACK TO THINKING " + getChopstickId());
+        System.out.println("Philosopher " + getPhilosopherId() + " PUT DOWN CHOPSTICK " + getRightChopstickId() + ", BACK TO THINKING ");
 
         threadSleep(500, 4000);
     }
@@ -94,7 +94,11 @@ public class Philosopher extends Thread {
         return this.id + 1;
     }
 
-    public int getChopstickId() {
-        return this.id + 1;
+    public int getLeftChopstickId() {
+        return leftChopstick.id + 1;
+    }
+
+    public int getRightChopstickId() {
+        return rightChopstick.id + 1;
     }
 }
