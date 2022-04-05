@@ -1,3 +1,7 @@
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class DiningPhilosophers {
 
     public static Philosopher[] createPhilosopher(int n) {
@@ -24,10 +28,12 @@ public class DiningPhilosophers {
 
     public static void main(String[] args) {
 
+        ExecutorService executorService = Executors.newFixedThreadPool(6);
+
         Philosopher[] philosophers = createPhilosopher(5);
 
         for (Philosopher philosopher : philosophers) {
-            philosopher.start();
+            executorService.execute(philosopher);
         }
     }
 }

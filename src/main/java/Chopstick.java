@@ -4,6 +4,10 @@ public class Chopstick {
     private boolean notOccupiedChopstick = true;
     private int occupiedChopstick;
 
+    /**
+     * giving each chopstick its unique identification.
+     * @param id
+     */
     public Chopstick(int id) {
         this.id = id;
 
@@ -34,7 +38,11 @@ public class Chopstick {
 
     }
 
-
+    /**
+     * When a philosophers left or right hand chopstick is put down, the philosopher on the other hand should
+     * receive a notification that the chopstick is no longer occupied and available to pick up.
+     * @param philosopher
+     */
     public synchronized void putDownChopstick(int philosopher) {
 
         if (!notOccupiedChopstick && occupiedChopstick == philosopher) {
