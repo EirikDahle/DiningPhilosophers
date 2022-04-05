@@ -1,4 +1,8 @@
+import java.util.concurrent.Semaphore;
+
 public class Philosopher extends Thread {
+
+    private static final Semaphore semaphore = new Semaphore(5);
 
     private final int id;
     private final Chopstick leftChopstick;
@@ -15,6 +19,8 @@ public class Philosopher extends Thread {
         for (;;) {
 
             System.out.println("Philosopher " + id + " : THINKING..");
+
+            semaphore.acquireUninterruptibly();
 
             rightChopstick.takeChopstick(id);
             System.out.println("Philosopher " + id + " HUNGRY, PICKS UP RIGHT CHOPSTICK" + rightChopstick.id);
