@@ -19,14 +19,25 @@ public class Philosopher extends Thread {
         for (;;) {
 
             System.out.println("Philosopher " + id + " : THINKING..");
+                if (id % 2 == 0) {
 
-            semaphore.acquireUninterruptibly();
+                    leftChopstick.takeChopstick(id);
+                    System.out.println("Philosopher " + id + " HUNGRY, PICKS UP LEFT CHOPSTICK" + leftChopstick.id);
 
-            rightChopstick.takeChopstick(id);
-            System.out.println("Philosopher " + id + " HUNGRY, PICKS UP RIGHT CHOPSTICK" + rightChopstick.id);
+                    rightChopstick.takeChopstick(id);
+                    System.out.println("Philosopher " + id + " PICKS UP RIGHT CHOPSTICK" + rightChopstick.id);
 
-            leftChopstick.takeChopstick(id);
-            System.out.println("Philosopher " + id + " PICKS UP LEFT CHOPSTICK" + leftChopstick.id);
+                }
+                else {
+
+                    rightChopstick.takeChopstick(id);
+                    System.out.println("Philosopher " + id + " HUNGRY, PICKS UP RIGHT CHOPSTICK" + rightChopstick.id);
+
+                    leftChopstick.takeChopstick(id);
+                    System.out.println("Philosopher " + id + " PICKS UP LEFT CHOPSTICK" + leftChopstick.id);
+
+                }
+
             System.out.println("Philosopher " + id + " EATING..");
 
             leftChopstick.putDownChopstick(id);
