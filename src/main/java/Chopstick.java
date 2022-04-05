@@ -6,7 +6,7 @@ public class Chopstick {
 
     /**
      * giving each chopstick its unique identification.
-     * @param id
+     * @param id a chopsticks unique identification
      */
     public Chopstick(int id) {
         this.id = id;
@@ -18,7 +18,7 @@ public class Chopstick {
      * The chopsticks acts as objects that can be used by all philosophers,
      * but not at the same time. By using a synchronized method a singular chopstick
      * can only be attained by one philosopher at a time.
-     * @param philosopher
+     * @param philosopher which philosopher occupies a chopstick.
      */
     public synchronized void takeChopstick(int philosopher) {
 
@@ -39,7 +39,7 @@ public class Chopstick {
     /**
      * When a philosophers left or right hand chopstick is put down, the philosopher on the other hand should
      * receive a notification that the chopstick is no longer occupied and available to pick up.
-     * @param philosopher
+     * @param philosopher which philosopher puts down his chopstick.
      */
     public synchronized void putDownChopstick(int philosopher) {
 

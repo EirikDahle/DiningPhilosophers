@@ -10,24 +10,23 @@ public class DiningPhilosophers {
     /**
      * createPhilosopher() initializes a amount of Philosophers and equally as many chopsticks "n" as Threads.
      * Philosophers is assigned both a left and right chopstick.
-     * @param n
-     * @return
+     * @param numberOfPhilosophers the amount of philosophers and the same amount of chopsticks.
      */
-    public static Philosopher[] createPhilosopher(int n) {
+    public static Philosopher[] createPhilosopherWithChopsticks(int numberOfPhilosophers) {
 
-        Chopstick[] chopsticks = new Chopstick[n];
+        Chopstick[] chopsticks = new Chopstick[numberOfPhilosophers];
 
-        for (int i = 0; i < n; i++){
+        for (int i = 0; i < numberOfPhilosophers; i++){
             chopsticks[i] = new Chopstick(i);
 
         }
 
-        Philosopher[] philosophers = new Philosopher[n];
+        Philosopher[] philosophers = new Philosopher[numberOfPhilosophers];
 
-        for (int i = 0; i < n; i++){
+        for (int i = 0; i < numberOfPhilosophers; i++){
 
             Chopstick leftChopstick = chopsticks[i];
-            Chopstick rightChopstick = chopsticks[(i + 1) % n];
+            Chopstick rightChopstick = chopsticks[(i + 1) % numberOfPhilosophers];
 
             philosophers[i] = new Philosopher(i, leftChopstick, rightChopstick);
         }
@@ -37,7 +36,6 @@ public class DiningPhilosophers {
 
     /**
      * Starts the sequence and run the created threads.
-     * @param args
      */
     public static void main(String[] args) {
 
@@ -46,7 +44,7 @@ public class DiningPhilosophers {
         ExecutorService executorService = Executors.newFixedThreadPool(6);
 
         //creates 5 philosophers.
-        Philosopher[] philosophers = createPhilosopher(5);
+        Philosopher[] philosophers = createPhilosopherWithChopsticks(5);
 
         //for every philosopher is put in a pool of 6 threads.
         for (Philosopher philosopher : philosophers) {

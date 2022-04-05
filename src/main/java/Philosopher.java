@@ -8,9 +8,9 @@ public class Philosopher extends Thread {
     /**
      * Giving each Philosopher an unique identification and assigning them two chopsticks,
      * one on the left and right hand side.
-     * @param id
-     * @param leftChopstick
-     * @param rightChopstick
+     * @param id a philosophers unique identification.
+     * @param leftChopstick this philosophers left chopstick identification.
+     * @param rightChopstick this philosophers right chopstick identification.
      */
     public Philosopher(int id, Chopstick leftChopstick, Chopstick rightChopstick) {
 
@@ -55,8 +55,8 @@ public class Philosopher extends Thread {
      * By having its own method its easier to alter the duration it takes for philosophers
      * to eat, think etc. by having min and max time period instead of a set time it varies
      * how long time each philosopher spends between actions.
-     * @param minTime
-     * @param maxTime
+     * @param minTime minimum time for threads to sleep.
+     * @param maxTime maximum time for threads to sleep.
      */
 
     private void threadSleep(int minTime, int maxTime) {
@@ -137,9 +137,8 @@ public class Philosopher extends Thread {
     /**
      * getRandomNumber() is used to generates a random time period within a given interval for threads
      * to stop up between actions.
-     * @param min
-     * @param max
-     * @return
+     * @param min sets a minimum for a threads sleeptime.
+     * @param max sets a maximum for a threads sleeptime.
      */
     private int getRandomNumber(int min, int max) {
 
@@ -149,7 +148,7 @@ public class Philosopher extends Thread {
 
     /**
      * getPhilosopherId() is used to display which philosopher performs which act in the printed sequence.
-     * @return
+     * @return philosopher identification.
      */
     public int getPhilosopherId() {
 
@@ -159,7 +158,7 @@ public class Philosopher extends Thread {
 
     /**
      * getLeftChopstickId() returns the id of a philosophers chopstick on the left side.
-     * @return
+     * @return left hand chopstick identification.
      */
     public int getLeftChopstickId() {
 
@@ -169,7 +168,7 @@ public class Philosopher extends Thread {
 
     /**
      * getRightChopstickId() returns the id of a philosophers chopstick on the right side.
-     * @return
+     * @return right hand chopstick identification.
      */
     public int getRightChopstickId() {
 
